@@ -18,17 +18,25 @@ System design is a very broad topic. Even a software engineer with many years of
 <p>4 Hot Questions and Reference</p>
 <p>5 Object Oriented Design</p>
 
-Scalability for Dummies
-Scalable Web Architecture and Distributed Systems
-Numbers Everyone Should Know
-Scalable System Design Patterns
-Introduction to Architecting Systems for Scale
-Transactions Across Datacenters
-A Plain English Introduction to CAP Theorem
-The CAP FAQ
-Paxos Made Simple
-Consistent Hashing
-NOSQL Patterns
-Scalability, Availability & Stability Patterns
+<hr/>
+
+
+<p>Scalability for Dummies</p>
+<p>Scalable Web Architecture and Distributed Systems</p>
+<p>Numbers Everyone Should Know</p>
+<p>Scalable System Design Patterns</p>
+<p>Introduction to Architecting Systems for Scale</p>
+<p>Transactions Across Datacenters</p>
+<p>A Plain English Introduction to CAP Theorem</p>
+<p>The CAP FAQ</p>
+<p>Paxos Made Simple</p>
+<p>Consistent Hashing</p>
+<p>NOSQL Patterns</p>
+<p>Scalability, Availability & Stability Patterns</p>
+
+<hr/>
+
 Of course, if you want to dive into system related topics, here is a good collection of reading list about services-engineering, and a good collection of material about distributed systems.
+
+
 
