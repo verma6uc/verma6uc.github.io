@@ -7,16 +7,16 @@ System design is a very broad topic. Even a software engineer with many years of
 
 ![_config.yml]({{ site.baseurl }}/images/systemcycle.png)
 
-System design is an exceptionally expansive theme. Indeed, even a product engineer with numerous years of working background at top IT organization may not be a specialist on system design &  outline. In the event that you need to end up a specialist, you have to peruse numerous books, articles, and comprehend genuine huge scale framework plan issues. 
+<p>System design is an exceptionally expansive theme. Indeed, even a product engineer with numerous years of working background at top IT organization may not be a specialist on system design &  outline. In the event that you need to end up a specialist, you have to peruse numerous books, articles, and comprehend genuine huge scale framework plan issues. </p>
+<p></p>
+<p>This archive just shows you to handle the System design traps with an orderly approach in a brief timeframe. You can plunge into every point on the off chance that you have time. Obviously, welcome to include your considerations! </p>
+<hr/>
 
-This archive just shows you to handle the System design traps with an orderly approach in a brief timeframe. You can plunge into every point on the off chance that you have time. Obviously, welcome to include your considerations!
-
-
-1 Basic Knowledge about System Design
-2 Company Engineering Blogs
-3 Products and Systems
-4 Hot Questions and Reference
-5 Object Oriented Design
+<p>1 Basic Knowledge about System Design</p>
+<p>2 Company Engineering Blogs</p>
+<p>3 Products and Systems</p>
+<p>4 Hot Questions and Reference</p>
+<p>5 Object Oriented Design</p>
 
 Scalability for Dummies
 Scalable Web Architecture and Distributed Systems
