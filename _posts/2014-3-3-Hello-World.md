@@ -17,3 +17,18 @@ This archive just shows you to handle the System design traps with an orderly ap
 3 Products and Systems
 4 Hot Questions and Reference
 5 Object Oriented Design
+
+Scalability for Dummies
+Scalable Web Architecture and Distributed Systems
+Numbers Everyone Should Know
+Scalable System Design Patterns
+Introduction to Architecting Systems for Scale
+Transactions Across Datacenters
+A Plain English Introduction to CAP Theorem
+The CAP FAQ
+Paxos Made Simple
+Consistent Hashing
+NOSQL Patterns
+Scalability, Availability & Stability Patterns
+Of course, if you want to dive into system related topics, here is a good collection of reading list about services-engineering, and a good collection of material about distributed systems.
+
