@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mach GTM — B2B Outbound Sales MCP Server</title>
+  <meta name="description" content="Open-source MCP server for B2B outbound sales. Build ICPs, research prospects, score leads, draft cold emails, and generate multi-touch sequences — directly inside Claude Code, Cursor, and any MCP client." />
+  <meta property="og:title" content="Mach GTM — B2B Outbound Sales MCP Server" />
+  <meta property="og:description" content="Open-source MCP server for B2B outbound sales. Research prospects, score leads, draft cold outreach — inside your AI coding agent." />
+  <meta property="og:url" content="https://verma6uc.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://machgtm.com" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --green: #10b981;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --code-bg: #0f0f1a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent-light); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #4f52e0; text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: var(--accent-light);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    h1 .highlight { color: var(--accent-light); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* INSTALL BOX */
+    .install-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem auto 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: var(--green);
+    }
+    .install-box span { color: var(--muted); margin-right: 0.25rem; }
+    .copy-btn {
+      background: var(--border);
+      border: none;
+      color: var(--muted);
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { background: var(--accent); color: #fff; }
+
+    /* TOOLS GRID */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      text-align: center;
+      color: var(--accent-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .tool-card:hover { border-color: var(--accent); }
+    .tool-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(99,102,241,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .tool-name {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-light);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .tool-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .tool-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; max-width: 680px; margin: 0 auto; }
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .step-num {
+      min-width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .step p { font-size: 0.875rem; color: var(--muted); }
+
+    /* SAFETY */
+    .safety-banner {
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 680px;
+      margin: 3rem auto 0;
+    }
+    .safety-icon { font-size: 2rem; }
+    .safety-banner h3 { font-size: 1rem; font-weight: 700; color: var(--green); margin-bottom: 0.25rem; }
+    .safety-banner p { font-size: 0.875rem; color: var(--muted); }
+
+    /* COMPATIBLE */
+    .compat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .compat-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(129,140,248,0.05));
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 16px;
+      text-align: center;
+      padding: 4rem 2rem;
+      margin: 0 2rem;
+    }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">mach<span>gtm</span></div>
+  <div class="nav-links">
+    <a href="#tools">Tools</a>
+    <a href="#how">How it works</a>
+    <a href="https://github.com/verma6uc/mach-gtm-mcp">GitHub</a>
+    <a href="https://machgtm.com" class="btn btn-primary">machgtm.com →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="dot"></span> Open Source · MIT · Free</div>
+  <h1>B2B outbound sales,<br>inside your <span class="highlight">AI agent</span></h1>
+  <p class="hero-sub">
+    mach-gtm-mcp is an open-source MCP server that brings the full outbound sales workflow
+    into Claude Code, Cursor, and any MCP client. Research prospects, score leads,
+    draft outreach — without leaving your terminal.
+  </p>
+  <div class="hero-actions">
+    <a href="https://github.com/verma6uc/mach-gtm-mcp" class="btn btn-primary">View on GitHub</a>
+    <a href="https://machgtm.com" class="btn btn-outline">machgtm.com</a>
+  </div>
+  <div class="install-box">
+    <span>$</span> npx mach-gtm-mcp
+    <button class="copy-btn" onclick="navigator.clipboard.writeText('npx mach-gtm-mcp');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <p class="section-label">5 MCP Tools</p>
+    <h2>Everything you need for outbound</h2>
+    <p class="section-sub">Five focused tools that cover the full B2B sales workflow, available as MCP tools in any compatible client.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">🎯</div>
+        <div class="tool-name">build_icp</div>
+        <h3>Build Your ICP</h3>
+        <p>Define your Ideal Customer Profile — industry, company size, pain points, buyer personas — and store it as context for lead scoring.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🔍</div>
+        <div class="tool-name">research_prospect</div>
+        <h3>Research Prospects</h3>
+        <p>Pull verified buying signals, recent news, funding rounds, and tech stack data for any company or contact.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <div class="tool-name">score_lead</div>
+        <h3>Score Leads</h3>
+        <p>Get a 0–100 ICP fit score for any prospect, with a breakdown of what signals drove the score.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">✉️</div>
+        <div class="tool-name">draft_outreach</div>
+        <h3>Draft Outreach</h3>
+        <p>Generate personalised cold emails and LinkedIn messages using the 1-3-1 framework, grounded in real prospect signals.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🔄</div>
+        <div class="tool-name">build_sequence</div>
+        <h3>Build Sequences</h3>
+        <p>Create complete multi-touch outreach sequences with timing, channel mix, and follow-up logic tailored to your ICP.</p>
+      </div>
+    </div>
+
+    <div class="safety-banner">
+      <div class="safety-icon">🛡️</div>
+      <div>
+        <h3>Human approval required before anything is sent</h3>
+        <p>mach-gtm-mcp never sends a message autonomously. Every draft requires explicit approval — you stay in control at all times.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <p class="section-label">Setup</p>
+    <h2>Up and running in 60 seconds</h2>
+    <p class="section-sub">No API key, no account, no configuration file needed.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Add the MCP server to your client</h3>
+          <p>Run <code style="color:var(--green);font-family:monospace">npx mach-gtm-mcp</code> or add it to your Claude Code / Cursor MCP config.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Build your ICP</h3>
+          <p>Tell your agent your target customer. It calls <code style="color:var(--green);font-family:monospace">build_icp</code> and saves the profile for scoring.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Research and score</h3>
+          <p>Give a company name. The agent researches it, scores fit 0–100, and explains why.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Draft outreach — you approve</h3>
+          <p>Get a personalised email or LinkedIn message drafted. Review it, edit it, then send from your own tool.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBLE -->
+<section>
+  <div class="container">
+    <p class="section-label">Compatible with</p>
+    <h2>Works with any MCP client</h2>
+    <p class="section-sub">Install once, use anywhere that supports the Model Context Protocol.</p>
+    <div class="compat-grid">
+      <div class="compat-pill">Claude Code</div>
+      <div class="compat-pill">Cursor</div>
+      <div class="compat-pill">Codex CLI</div>
+      <div class="compat-pill">Windsurf</div>
+      <div class="compat-pill">Gemini CLI</div>
+      <div class="compat-pill">Continue.dev</div>
+      <div class="compat-pill">Any MCP client</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-bottom: 5rem;">
+  <div class="cta-section">
+    <h2>Start building your pipeline</h2>
+    <p>Free, open-source, MIT licensed. No signup required.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://github.com/verma6uc/mach-gtm-mcp" class="btn btn-primary">View on GitHub →</a>
+      <a href="https://machgtm.com" class="btn btn-outline">machgtm.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://github.com/verma6uc/mach-gtm-mcp">mach-gtm-mcp</a> ·
+    MIT License ·
+    <a href="https://machgtm.com">machgtm.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
