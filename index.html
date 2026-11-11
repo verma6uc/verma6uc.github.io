@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mach GTM — B2B Outbound Sales MCP Server</title>
-  <meta name="description" content="Open-source MCP server for B2B outbound sales. Build ICPs, research prospects, score leads, draft cold emails, and generate multi-touch sequences — directly inside Claude Code, Cursor, and any MCP client." />
-  <meta property="og:title" content="Mach GTM — B2B Outbound Sales MCP Server" />
-  <meta property="og:description" content="Open-source MCP server for B2B outbound sales. Research prospects, score leads, draft cold outreach — inside your AI coding agent." />
+  <title>MachGTM local MCP starter kit</title>
+  <meta name="description" content="Five local MCP helpers for sales templates, research checklists and arithmetic lead scoring. Read the source, check the outputs and compare the hosted MachGTM connector." />
+  <meta property="og:title" content="MachGTM local MCP starter kit" />
+  <meta property="og:description" content="Local sales templates and research checklists, with source code and a guide to the hosted MachGTM workspace connector." />
   <meta property="og:url" content="https://verma6uc.github.io" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://machgtm.com" />
+  <link rel="canonical" href="https://verma6uc.github.io/" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -283,7 +283,7 @@
 <body>
 
 <nav>
-  <div class="logo">mach<span>gtm</span></div>
+  <div class="logo">MachGTM</div>
   <div class="nav-links">
     <a href="#tools">Tools</a>
     <a href="#how">How it works</a>
@@ -295,11 +295,11 @@
 <!-- HERO -->
 <section class="hero">
   <div class="badge"><span class="dot"></span> Open Source · MIT · Free</div>
-  <h1>B2B outbound sales,<br>inside your <span class="highlight">AI agent</span></h1>
+  <h1>Local sales helpers<br>for your <span class="highlight">MCP client</span></h1>
   <p class="hero-sub">
-    mach-gtm-mcp is an open-source MCP server that brings the full outbound sales workflow
-    into Claude Code, Cursor, and any MCP client. Research prospects, score leads,
-    draft outreach — without leaving your terminal.
+    mach-gtm-mcp is an open-source starter kit with five local helpers.
+    It returns templates, a research checklist, arithmetic scores and a fixed sequence outline
+    from the inputs you supply. Review the source and validate the output before using it.
   </p>
   <div class="hero-actions">
     <a href="https://github.com/verma6uc/mach-gtm-mcp" class="btn btn-primary">View on GitHub</a>
@@ -315,47 +315,47 @@
 <section id="tools">
   <div class="container">
     <p class="section-label">5 MCP Tools</p>
-    <h2>Everything you need for outbound</h2>
-    <p class="section-sub">Five focused tools that cover the full B2B sales workflow, available as MCP tools in any compatible client.</p>
+    <h2>What the five helpers return</h2>
+    <p class="section-sub">The handlers run locally over standard input and output. External research and source validation remain separate tasks.</p>
 
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-icon">🎯</div>
         <div class="tool-name">build_icp</div>
         <h3>Build Your ICP</h3>
-        <p>Define your Ideal Customer Profile — industry, company size, pain points, buyer personas — and store it as context for lead scoring.</p>
+        <p>Returns a largely fixed software-sales profile and includes the supplied best-customer text. The handler leaves company_description unused, so check and adapt every field.</p>
       </div>
       <div class="tool-card">
         <div class="tool-icon">🔍</div>
         <div class="tool-name">research_prospect</div>
-        <h3>Research Prospects</h3>
-        <p>Pull verified buying signals, recent news, funding rounds, and tech stack data for any company or contact.</p>
+        <h3>Prepare a research checklist</h3>
+        <p>Returns places and questions to investigate from the supplied company and role. A researcher must fetch the sources and check the company identity.</p>
       </div>
       <div class="tool-card">
         <div class="tool-icon">📊</div>
         <div class="tool-name">score_lead</div>
         <h3>Score Leads</h3>
-        <p>Get a 0–100 ICP fit score for any prospect, with a breakdown of what signals drove the score.</p>
+        <p>Applies arithmetic rules to supplied industry, headcount, technology and signal fields. Its score and confidence label require validation against your sales decision.</p>
       </div>
       <div class="tool-card">
         <div class="tool-icon">✉️</div>
         <div class="tool-name">draft_outreach</div>
         <h3>Draft Outreach</h3>
-        <p>Generate personalised cold emails and LinkedIn messages using the 1-3-1 framework, grounded in real prospect signals.</p>
+        <p>Inserts supplied names, signals and offers into message templates. Check every claim. Omitted proof uses generic fallback wording that may be unsupported.</p>
       </div>
       <div class="tool-card">
         <div class="tool-icon">🔄</div>
         <div class="tool-name">build_sequence</div>
         <h3>Build Sequences</h3>
-        <p>Create complete multi-touch outreach sequences with timing, channel mix, and follow-up logic tailored to your ICP.</p>
+        <p>Returns up to eight predefined touchpoints and fixed intervals. Review the returned count, timing, claims and contact rules before using the outline.</p>
       </div>
     </div>
 
     <div class="safety-banner">
       <div class="safety-icon">🛡️</div>
       <div>
-        <h3>Human approval required before anything is sent</h3>
-        <p>mach-gtm-mcp never sends a message autonomously. Every draft requires explicit approval — you stay in control at all times.</p>
+        <h3>Check the facts before using a draft</h3>
+        <p>The local handlers return text and JSON. Review the source passages, seller proof and recipient before transferring a draft to a sending tool.</p>
       </div>
     </div>
   </div>
@@ -365,8 +365,8 @@
 <section id="how" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="container">
     <p class="section-label">Setup</p>
-    <h2>Up and running in 60 seconds</h2>
-    <p class="section-sub">No API key, no account, no configuration file needed.</p>
+    <h2>Connect the local starter kit</h2>
+    <p class="section-sub">Use Node.js and an MCP client that supports a local stdio server. Configure the command in that client.</p>
 
     <div class="steps">
       <div class="step">
@@ -380,24 +380,37 @@
         <div class="step-num">2</div>
         <div>
           <h3>Build your ICP</h3>
-          <p>Tell your agent your target customer. It calls <code style="color:var(--green);font-family:monospace">build_icp</code> and saves the profile for scoring.</p>
+          <p>Call <code style="color:var(--green);font-family:monospace">build_icp</code>, inspect the fixed profile and keep your edited version for later inputs.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div>
           <h3>Research and score</h3>
-          <p>Give a company name. The agent researches it, scores fit 0–100, and explains why.</p>
+          <p>Use the checklist to collect dated sources yourself. Supply checked fields to the scorer and inspect the reasons.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div>
           <h3>Draft outreach — you approve</h3>
-          <p>Get a personalised email or LinkedIn message drafted. Review it, edit it, then send from your own tool.</p>
+          <p>Review the message template against your sources, remove unsupported wording and choose the next action in your own workflow.</p>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="container">
+    <h2>Choose the right connection and evidence</h2>
+    <p class="section-sub">The hosted workspace connector is available at <code>https://machgtm.com/mcp</code>. Follow the connection guide for authentication and available actions.</p>
+    <ul class="steps">
+      <li><a href="https://machgtm.com/blog/mcp-server-sales-prospecting">Compare the local helpers and hosted sales connector</a></li>
+      <li><a href="https://machgtm.com/help/connect-ai-assistant">Connect an AI assistant to your MachGTM workspace</a></li>
+      <li><a href="https://machgtm.com/resources/mach-mcp-connection-checklist.md">Download the connection checklist</a></li>
+      <li><a href="https://machgtm.com/blog/software-services-account-research-brief">Build an account-research handoff with sources and unresolved questions</a></li>
+    </ul>
   </div>
 </section>
 
@@ -405,8 +418,8 @@
 <section>
   <div class="container">
     <p class="section-label">Compatible with</p>
-    <h2>Works with any MCP client</h2>
-    <p class="section-sub">Install once, use anywhere that supports the Model Context Protocol.</p>
+    <h2>Use a client with local stdio support</h2>
+    <p class="section-sub">Check your client’s current local-server setup instructions and runtime requirements.</p>
     <div class="compat-grid">
       <div class="compat-pill">Claude Code</div>
       <div class="compat-pill">Cursor</div>
@@ -422,8 +435,8 @@
 <!-- CTA -->
 <section style="padding-bottom: 5rem;">
   <div class="cta-section">
-    <h2>Start building your pipeline</h2>
-    <p>Free, open-source, MIT licensed. No signup required.</p>
+    <h2>Connect to the MachGTM workspace</h2>
+    <p>MachGTM is a sales workspace for software and services teams. Its hosted connector uses your connected workspace, permissions and configurable review rules.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="https://github.com/verma6uc/mach-gtm-mcp" class="btn btn-primary">View on GitHub →</a>
       <a href="https://machgtm.com" class="btn btn-outline">machgtm.com</a>
