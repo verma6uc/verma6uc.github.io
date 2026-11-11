@@ -124,6 +124,11 @@
       font-size: 0.95rem;
       color: var(--green);
     }
+    .install-box { max-width: 100%; flex-wrap: wrap; overflow-wrap: anywhere; }
+    @media (max-width: 640px) {
+      nav { flex-wrap: wrap; gap: 0.75rem; padding: 1rem; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; }
+    }
     .install-box span { color: var(--muted); margin-right: 0.25rem; }
     .copy-btn {
       background: var(--border);
@@ -306,8 +311,8 @@
     <a href="https://machgtm.com" class="btn btn-outline">machgtm.com</a>
   </div>
   <div class="install-box">
-    <span>$</span> npx mach-gtm-mcp
-    <button class="copy-btn" onclick="navigator.clipboard.writeText('npx mach-gtm-mcp');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    <span>$</span> npx -y github:verma6uc/mach-gtm-mcp
+    <button class="copy-btn" onclick="navigator.clipboard.writeText('npx -y github:verma6uc/mach-gtm-mcp');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
   </div>
 </section>
 
@@ -373,7 +378,7 @@
         <div class="step-num">1</div>
         <div>
           <h3>Add the MCP server to your client</h3>
-          <p>Run <code style="color:var(--green);font-family:monospace">npx mach-gtm-mcp</code> or add it to your Claude Code / Cursor MCP config.</p>
+          <p>Run <code style="color:var(--green);font-family:monospace">npx -y github:verma6uc/mach-gtm-mcp</code> or add it to your Claude Code / Cursor MCP config.</p>
         </div>
       </div>
       <div class="step">
